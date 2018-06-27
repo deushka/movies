@@ -28,14 +28,13 @@ namespace :parse do
 	task movies: :environment do
 		require "nokogiri"
 		require "open-uri"
-		html = Nokogiri::HTML(open("http://kino.kz/thisweek.asp"))
+		html = Nokogiri::HTML(open("http://kino.kz/thisweek.asp?city=4&day=1"))
 		html.css(".mov_week_detail").each do |part|
 			title = part.css(".title_red").text
 			path = part.css(".movie_poster img").attr('src')
 			image_url = "http://kino.kz" + path
-			part.css("td[colspan=3] div").each do |desc|
-				puts desc
-			end
+			description = part.css("td[colspan=3] //div[2]").text
+			Movie.create(title: title, description: description, image_url: image_url)
 		end
 
 	end
