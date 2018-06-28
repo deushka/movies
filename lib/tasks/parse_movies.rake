@@ -54,7 +54,8 @@ namespace :parse do
 				if  movie != nil
 					movie_id = Movie.find_by_title(movie_name).id
 				else
-					movie_id = 0
+					Movie.create(title: movie_name)
+					movie_id = Movie.find_by_title(movie_name).id
 				end
 				splitted = movie_time.split(":")
 				time_now = Time.now
