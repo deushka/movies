@@ -7,7 +7,7 @@
 #  city_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+
 
 class Cinema < ApplicationRecord
 	belongs_to :city
