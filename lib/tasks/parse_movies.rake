@@ -10,6 +10,12 @@ namespace :parse do
 		end
 	end
 
+	task cities: :environment do
+		require "nokogiri"
+		require "open-uri"
+		
+	end
+
 	task :movies => :environment do
 		require "nokogiri"
 		require "open-uri"
@@ -19,6 +25,6 @@ namespace :parse do
 	task sessions: :environment do
 		require "nokogiri"
 		require "open-uri"
-		
+
 	end
 end
