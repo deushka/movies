@@ -13,4 +13,8 @@
 class Movie < ApplicationRecord
 	has_many :sessions
 	has_many :cinemas, through: :sessions
+
+	def film_ids(city_id)
+		cinemas.where(city_id: city_id).select(:id).uniq
+	end
 end
